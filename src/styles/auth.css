@@ -1,0 +1,125 @@
+.login-container,
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #357abD;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fadbd8;
+  border-radius: 4px;
+}
+
+.success-message {
+  color: #27ae60;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d4efdf;
+  border-radius: 4px;
+}
+
+/* Nav stilleri */
+.auth-nav, .app-nav {
+  padding: 15px;
+  background-color: #f8f9fa;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #4a90e2;
+}
+
+.auth-nav a:hover {
+  text-decoration: underline;
+}
+
+.app-nav {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.user-info {
+  font-weight: bold;
+}
+
+.logout-button {
+  width: auto;
+  padding: 8px 15px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.register-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.register-button:hover {
+  background-color: #45a049;
+} 

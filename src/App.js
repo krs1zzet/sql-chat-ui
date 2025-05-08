@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -32,6 +32,7 @@ function App() {
   const [examples, setExamples] = useState('');
   const modelOptions = ['gpt-3.5-turbo', 'gpt-4', 'example model'];
   const techniqueOptions = ['zero-shot prompting', 'few-shot prompting', 'n-shot prompting'];
+  const chatContainerRef = useRef(null);
 
   // Kullanıcı değiştiğinde chatleri backend'den çek
   useEffect(() => {
@@ -104,6 +105,12 @@ function App() {
       })
       .catch(() => setPromptSettings([]));
   }, []);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   // Chat seçimini düzgün yönet
   const handleSelectChat = (chatId) => {
@@ -227,7 +234,11 @@ function App() {
                     </select>
                   </div>
                   {/* Ortada chat mesajları alanı */}
-                  <div className="chat-container" style={{ flex: 1, overflowY: 'auto', minHeight: 0, padding: '0 0 0 0' }}>
+                  <div
+                    className="chat-container"
+                    ref={chatContainerRef}
+                    style={{ flex: 1, overflowY: 'auto', minHeight: 0, padding: '0 0 0 0' }}
+                  >
                     {messages.map((message, index) => (
                       <ChatMessage key={index} message={message} />
                     ))}

@@ -137,17 +137,23 @@ function App() {
   // Mesaj gönder
   const handleSendMessage = async (message) => {
     if (!user || !currentChatId) return;
-    if (!promptSetting) {
-      alert('Please create/select a prompt setting first!');
-      return;
-    }
-    const newMessage = {
-      sender: user.email,
-      content: message,
-      chatId: currentChatId,
-      promptSettingId: promptSetting.id
-    };
+    // Önce mevcut ayarlarla yeni bir prompt setting oluştur
     try {
+      const promptSettingBody = {
+        model: selectedModel,
+        technique: selectedTechnique,
+        nValue: selectedTechnique === 'n-shot prompting' ? nValue : '',
+        examples: selectedTechnique === 'n-shot prompting' ? examples : ''
+      };
+      const promptRes = await createPromptSetting(promptSettingBody);
+      const promptSettingId = promptRes.data;
+      // Şimdi chat mesajını gönder
+      const newMessage = {
+        sender: user.email,
+        content: message,
+        chatId: currentChatId,
+        promptSettingId
+      };
       await createChatMessage(newMessage);
       // Mesajı gönderdikten sonra tekrar mesajları çek
       const res = await getChatMessages(currentChatId);
@@ -163,7 +169,7 @@ function App() {
       });
       setMessages(sorted);
     } catch (err) {
-      alert('Mesaj gönderilemedi!');
+      alert('Mesaj gönderilemedi veya prompt ayarı kaydedilemedi!');
     }
   };
 

@@ -27,11 +27,16 @@ function App() {
   const [showPromptForm, setShowPromptForm] = useState(false);
   const [newPrompt, setNewPrompt] = useState({ technique: '', nValue: '', examples: '', model: '' });
   const [selectedModel, setSelectedModel] = useState('');
-  const [selectedTechnique, setSelectedTechnique] = useState('');
+  const [selectedTechnique, setSelectedTechnique] = useState('zero-shot prompting');
   const [nValue, setNValue] = useState('');
   const [examples, setExamples] = useState('');
-  const modelOptions = ['gpt-3.5-turbo', 'gpt-4', 'example model'];
-  const techniqueOptions = ['zero-shot prompting', 'few-shot prompting', 'n-shot prompting'];
+  const modelOptions = [
+    'GPT-4o Mini',
+    'Gemini 1.5 Flash Lite',
+    'Grok-2-1212',
+    'Gemini 1.5 Flash'
+  ];
+  const techniqueOptions = ['zero-shot prompting', 'n-shot prompting'];
   const chatContainerRef = useRef(null);
 
   // Kullanıcı değiştiğinde chatleri backend'den çek
@@ -235,7 +240,6 @@ function App() {
                       onChange={e => setSelectedModel(e.target.value)}
                       style={{ minWidth: 120, borderRadius: 6, padding: '4px 10px', background: 'rgba(32,33,35,0.95)', color: '#ececf1', border: '1px solid #444', fontSize: 15, outline: 'none' }}
                     >
-                      <option value="">Model Seç</option>
                       {modelOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                     </select>
                   </div>
@@ -266,7 +270,6 @@ function App() {
                         }}
                         style={{ minWidth: 140, borderRadius: 6, padding: '4px 10px', background: 'rgba(52,53,65,0.85)', color: '#ececf1', border: '1px solid #444', fontSize: 15, outline: 'none' }}
                       >
-                        <option value="">Teknik Seç</option>
                         {techniqueOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                       </select>
                       {selectedTechnique === 'n-shot prompting' && (

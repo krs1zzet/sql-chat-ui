@@ -122,4 +122,34 @@ button:hover {
 
 .register-button:hover {
   background-color: #45a049;
+}
+
+.schema-add-button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.schema-add-button:hover {
+  background-color: #e68900;
+}
+
+.schema-add-button.schema-added,
+.schema-add-button.schema-added:disabled {
+  background-color: #27ae60 !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
 } 
